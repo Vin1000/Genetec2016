@@ -26,8 +26,8 @@ int main(int argc, char *argv[])
 
     //////////////////////////////////////////////////////////
     // Start
-    Logger::Info("Start.");
-    Logger::LineJump();
+    // Logger::Info("Start.");
+    // Logger::LineJump();
 
 
     // Argument checking: getting input path for files to process
@@ -35,7 +35,8 @@ int main(int argc, char *argv[])
     std::string folderPath;
     std::string outputPath;
     char statChar;
-
+	
+	// TODO: Remove this if.
     if (argc < 4)
     {
         Logger::Info(log + "Missing argument FOLDER_PATH. Manual input required.");
@@ -55,9 +56,9 @@ int main(int argc, char *argv[])
         statChar = argv[3][0];
     }
 
-    Logger::Info("Input folder: " + folderPath);
-    Logger::Info("Output folder: " + outputPath);
-    Logger::LineJump();
+    // Logger::Info("Input folder: " + folderPath);
+    // Logger::Info("Output folder: " + outputPath);
+    // Logger::LineJump();
 
 
     // Opens the directory to obtain file list
@@ -71,7 +72,7 @@ int main(int argc, char *argv[])
     }
     else if (STATUS_CODE::INVALID_ARGUMENTS == status)
     {
-        Logger::Info("Invalid argument error.");
+        // Logger::Info("Invalid argument error.");
         return -1;
     }
 
@@ -83,7 +84,7 @@ int main(int argc, char *argv[])
     auto files = Sort(dir.Files());
     for (auto file : files)
     {
-        Logger::Info("Encoding file: " + ws2s(file.Filename()));
+        // Logger::Info("Encoding file: " + ws2s(file.Filename()));
         {
             FileReader fr;
             if (fr.Open(file.FullPath()))
@@ -113,8 +114,8 @@ int main(int argc, char *argv[])
         }
     }
 
-    Logger::LineJump();
-    Logger::Info("Finished.");
+    // Logger::LineJump();
+    // Logger::Info("Finished.");
 
     // Get end time to evaluate performance of code
     auto end = std::chrono::system_clock::now().time_since_epoch();

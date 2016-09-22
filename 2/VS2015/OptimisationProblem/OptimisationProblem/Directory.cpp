@@ -111,14 +111,13 @@ std::list<File> Directory::Files()
     std::vector<File> v(0);
     do
     {
-        int nCount = 0;
 
         if (!(_ffd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY))
         {
             //Logger::Info("Found a file.");
 
-            if (v.capacity() < nCount)
-                v.resize(nCount + VECTOR_RESIZE_VALUE);
+            if (v.capacity() < 0)
+                v.resize(VECTOR_RESIZE_VALUE);
 
             File f(_path, _ffd.cFileName);
 

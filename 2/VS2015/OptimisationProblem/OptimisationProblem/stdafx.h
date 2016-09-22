@@ -8,7 +8,7 @@
 #include <Windows.h>
 
 #define VECTOR_RESIZE_VALUE 1
-#define LOGFILEPATH "C:\\Users\\mfournier\\Documents\\Work\\optim.log"
-#define STATFILEPATH "C:\\Users\\mfournier\\Documents\\Work\\stats.log"
+#define LOGFILEPATH "C:\\optim.log"
+#define STATFILEPATH "C:\\stats.log"
 
 // TODO: reference additional headers your program requires here

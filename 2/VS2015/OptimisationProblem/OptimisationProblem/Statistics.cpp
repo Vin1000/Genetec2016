@@ -13,24 +13,8 @@ Statistics::Statistics(char c)
     _characterRatio      = new float[_arraySize];
     for (int C = 0; C < 5; C++)
     {
-        switch (C)
-        {
-        case 0:
-            _characterOccurences[0] = 0;
-            _characterRatio[0] = 0;
-        case 1:
-            _characterOccurences[1] = 0;
-            _characterRatio[1] = 0;
-        case 2:
-            _characterOccurences[2] = 0;
-            _characterRatio[2] = 0;
-        case 3:
-            _characterOccurences[3] = 0;
-            _characterRatio[3] = 0;
-        case 4:
-            _characterOccurences[4] = 0;
-            _characterRatio[4] = 0;
-        }
+        _characterOccurences[C] = 0;
+        _characterRatio[C] = 0;
     }
 }
 
@@ -41,19 +25,6 @@ Statistics::~Statistics()
     delete _characterRatio;
 }
 
-int Statistics::ComputeCharacterAverageOccurences() const
-{
-    int total = 0;
-    for (int i = 0; i < _index; i++)
-    {
-        total = total + _characterOccurences[i];
-    }
-
-    if (total > 0)
-        return total / (_index + 1);
-
-    return 0;
-}
 float Statistics::ComputeCharacterAverageRatio() const
 {
     float total = 0;

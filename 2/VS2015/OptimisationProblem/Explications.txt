@@ -11,3 +11,5 @@ Optimisations:
 4. Directory.cpp
 	- fonction Files(): enlever la variable nCount - inutile. Remplacement par 0 dans le if
 	- v.resize(VECTOR_RESIZE_VALUE) plutôt que 0 + VECTOR_RESIZE_VALUE
+
+5. Retrait de méthode inutile

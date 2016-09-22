@@ -25,22 +25,6 @@ Statistics::~Statistics()
     delete _characterRatio;
 }
 
-float Statistics::ComputeCharacterAverageRatio() const
-{
-    float total = 0;
-    for (int i = 0; i < _index; i++)
-    {
-        total = total + _characterRatio[i];
-    }
-
-    if (total > 0)
-        return total / (_index + 1);
-
-    return 0.0f;
-}
-
-
-
 std::string Statistics::ComputeFile(FileReader fr, std::wstring fileName)
 {
     
@@ -52,22 +36,26 @@ std::string Statistics::ComputeFile(FileReader fr, std::wstring fileName)
     }
 
     int totalCharCount = 0;
-    while (!fr.IsEOF())
+	int occurences = 0;
+
+	std::string line;
+
+    while (fr.ReadLine(line))
     {
-        std::string line;
-        if (fr.ReadLine(line))
+		int lineSize = line.size();
+        totalCharCount += (int)lineSize;
+        for (std::string::size_type i = 0; i < lineSize; ++i)
         {
-            totalCharCount += (int)line.size();
-            for (std::string::size_type i = 0; i < line.size(); ++i)
+            char c = line[i];
+            if (c == _character)
             {
-                char c = line[i];
-                if (c == _character)
-                {
-                    _characterOccurences[_index] = _characterOccurences[_index] + 1;
-                }
+				occurences++;
             }
         }
+        
     }
+
+	_characterOccurences[_index] = occurences;
 
     if(totalCharCount!= 0)
         _characterRatio[_index] =  ((float)_characterOccurences[_index] / (float)totalCharCount) * 100.0f;

@@ -19,7 +19,6 @@ public:
     ~Statistics();
 
     std::string ComputeFile(FileReader fr, std::wstring fileName);
-    float ComputeCharacterAverageRatio() const;
 
     template<class T>
     void Resize(T*& array, size_t currentSize) const;

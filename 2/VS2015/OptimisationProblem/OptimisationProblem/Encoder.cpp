@@ -22,10 +22,12 @@ std::string Encoder::EncodeString(const std::string input)
 std::string Encoder::base64Encode(std::vector<BYTE> inputBuffer)
 {
     std::string encodedString;
-    encodedString.reserve(((inputBuffer.size() / 3) + (inputBuffer.size() % 3 > 0)) * 4);
+	int sizemod3 = inputBuffer.size() % 3;
+	int sizediv3 = inputBuffer.size() / 3;
+    encodedString.reserve((sizediv3 + (sizemod3 > 0)) * 4);
     DWORD temp;
     std::vector<BYTE>::iterator cursor = inputBuffer.begin();
-    for (size_t idx = 0; idx < inputBuffer.size() / 3; idx++)
+    for (size_t idx = 0; idx < sizediv3; idx++)
     {
         temp = (*cursor++) << 16; //Convert to big endian
         temp += (*cursor++) << 8;
@@ -35,7 +37,7 @@ std::string Encoder::base64Encode(std::vector<BYTE> inputBuffer)
         encodedString.append(1, encodeLookup[(temp & 0x00000FC0) >> 6]);
         encodedString.append(1, encodeLookup[(temp & 0x0000003F)]);
     }
-    switch (inputBuffer.size() % 3)
+    switch (sizemod3)
     {
     case 1:
         temp = (*cursor++) << 16; //Convert to big endian

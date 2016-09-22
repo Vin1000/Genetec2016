@@ -19,7 +19,6 @@ public:
     ~Statistics();
 
     std::string ComputeFile(FileReader fr, std::wstring fileName);
-    int ComputeCharacterAverageOccurences() const;
     float ComputeCharacterAverageRatio() const;
 
     template<class T>

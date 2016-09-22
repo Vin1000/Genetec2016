@@ -12,5 +12,9 @@ Optimisations:
 	- fonction Files(): enlever la variable nCount - inutile. Remplacement par 0 dans le if
 	- fonction Files(): v.resize(VECTOR_RESIZE_VALUE) plutôt que 0 + VECTOR_RESIZE_VALUE
 	
+5. Statistics.cpp
+	- Retrait de méthode inutile
+
 6. Encoder.cpp
 	- fonction EncodeString(): mettre le size de l'input dans une variable plutôt que de le recalculer dans chaque boucle
+	- v.resize(VECTOR_RESIZE_VALUE) plutôt que 0 + VECTOR_RESIZE_VALUE

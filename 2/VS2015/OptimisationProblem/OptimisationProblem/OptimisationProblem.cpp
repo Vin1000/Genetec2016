@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
 
     //////////////////////////////////////////////////////////
     // Start
+	// TODO: remove this
 
 	Logger::LineJump();
 	Logger::LineJump();
@@ -68,7 +69,6 @@ int main(int argc, char *argv[])
     // Opens the directory to obtain file list
     Directory dir;
     STATUS_CODE status = dir.Open(folderPath.c_str());
-
 
     if (STATUS_CODE::OK == status)
     {

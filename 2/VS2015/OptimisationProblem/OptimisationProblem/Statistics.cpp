@@ -4,14 +4,14 @@
 #include "Logger.h"
 #include "HelperMethods.h"
 
-Statistics::Statistics(char c, int size)
+Statistics::Statistics(char c)
 {
     _character = c;
     _index = 0;
-    _arraySize = size;
+    _arraySize = 5;
     _characterOccurences = new int[_arraySize];
     _characterRatio      = new float[_arraySize];
-    for (int C = 0; C < size; C++)
+    for (int C = 0; C < 5; C++)
     {
         _characterOccurences[C] = 0;
         _characterRatio[C] = 0;
@@ -27,10 +27,19 @@ Statistics::~Statistics()
 
 std::string Statistics::ComputeFile(FileReader fr, std::wstring fileName)
 {
+    
+    if (_index == _arraySize)
+    {
+        Resize(_characterOccurences, _index);
+        Resize(_characterRatio, _index);
+        _arraySize = _arraySize + VECTOR_RESIZE_VALUE;
+    }
+
     int totalCharCount = 0;
 	int occurences = 0;
 
 	std::string line;
+
     while (fr.ReadLine(line))
     {
 		int lineSize = line.size();
@@ -55,4 +64,21 @@ std::string Statistics::ComputeFile(FileReader fr, std::wstring fileName)
     _index++;
 
     return output;
+}
+
+template <class T>
+void Statistics::Resize(T*& array, size_t currentSize) const
+{
+    T* tempArray = new T[currentSize+VECTOR_RESIZE_VALUE];
+    for (int i = 0; i < currentSize; i++)
+    {
+        tempArray[i] = array[i];
+    }
+    delete[] array;
+    array = tempArray;
+
+    for (size_t i = currentSize; i < currentSize + VECTOR_RESIZE_VALUE; i++)
+    {
+        array[i] = 0;
+    }
 }

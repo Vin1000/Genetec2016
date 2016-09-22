@@ -65,13 +65,12 @@ int main(int argc, char *argv[])
         return -1;
     }
 
+    // Create statistic object which compute and store the stats for each file that is processed.
+    Statistics stat(statChar);
+
     // Encode each file
     //Sort the directory files so that the stats output is ordered alphabetically
 	auto files = dir.Files();
-
-	// Create statistic object which compute and store the stats for each file that is processed.
-	Statistics stat(statChar, files.size());
-
     for (auto file : files)
     {
         // Logger::Info("Encoding file: " + ws2s(file.Filename()));

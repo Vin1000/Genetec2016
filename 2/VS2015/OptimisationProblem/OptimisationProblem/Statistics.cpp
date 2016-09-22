@@ -36,22 +36,26 @@ std::string Statistics::ComputeFile(FileReader fr, std::wstring fileName)
     }
 
     int totalCharCount = 0;
+	int occurences = 0;
     while (!fr.IsEOF())
     {
         std::string line;
         if (fr.ReadLine(line))
         {
-            totalCharCount += (int)line.size();
-            for (std::string::size_type i = 0; i < line.size(); ++i)
+			int lineSize = line.size();
+            totalCharCount += (int)lineSize;
+            for (std::string::size_type i = 0; i < lineSize; ++i)
             {
                 char c = line[i];
                 if (c == _character)
                 {
-                    _characterOccurences[_index] = _characterOccurences[_index] + 1;
+					occurences++;
                 }
             }
         }
     }
+
+	_characterOccurences[_index] = occurences;
 
     if(totalCharCount!= 0)
         _characterRatio[_index] =  ((float)_characterOccurences[_index] / (float)totalCharCount) * 100.0f;

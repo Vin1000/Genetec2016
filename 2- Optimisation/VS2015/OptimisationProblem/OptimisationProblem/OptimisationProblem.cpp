@@ -35,7 +35,8 @@ int main(int argc, char *argv[])
     std::string folderPath;
     std::string outputPath;
     char statChar;
-
+	
+	// TODO: Remove this if.
     if (argc < 4)
     {
         Logger::Info(log + "Missing argument FOLDER_PATH. Manual input required.");

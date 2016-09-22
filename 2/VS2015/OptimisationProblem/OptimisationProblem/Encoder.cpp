@@ -9,7 +9,8 @@ std::string Encoder::EncodeString(const std::string input)
 {
     std::vector<BYTE> inputBuffer;
 
-    for (int i = 0; i < input.size(); i++)
+	int size = input.size();
+    for (int i = 0; i < size; i++)
     {
         inputBuffer.push_back(input[i]);
     }

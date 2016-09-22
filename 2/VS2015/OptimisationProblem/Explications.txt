@@ -1,0 +1,9 @@
+Optimisations:
+1. Plusieurs fichiers
+	commenter plusieurs lignes de log
+
+2. HelpersMethod.h
+	fonction Sort(): utilisation de la variable last plutôt que de recalculer lst.end() deux fois.
+
+3. OptimisationProblem.cpp
+	fonction main(): enlever le Sort() des fichiers, c'est déjà sorté par défaut.

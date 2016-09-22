@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
 
     // Encode each file
     //Sort the directory files so that the stats output is ordered alphabetically
-    auto files = Sort(dir.Files());
+	auto files = dir.Files();
     for (auto file : files)
     {
         // Logger::Info("Encoding file: " + ws2s(file.Filename()));

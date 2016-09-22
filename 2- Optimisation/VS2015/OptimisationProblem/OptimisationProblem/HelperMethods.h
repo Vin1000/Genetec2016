@@ -13,7 +13,7 @@ static std::list<T> Sort(std::list<T> lst, bool ascending = true)
     auto first = lst.begin();
     auto second = ++lst.begin();
 
-    if (first == lst.end() || second == lst.end())
+    if (first == last || second == last)
         return lst;
 
     do

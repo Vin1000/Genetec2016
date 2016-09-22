@@ -37,22 +37,22 @@ std::string Statistics::ComputeFile(FileReader fr, std::wstring fileName)
 
     int totalCharCount = 0;
 	int occurences = 0;
-    while (!fr.IsEOF())
+
+	std::string line;
+
+    while (fr.ReadLine(line))
     {
-        std::string line;
-        if (fr.ReadLine(line))
+		int lineSize = line.size();
+        totalCharCount += (int)lineSize;
+        for (std::string::size_type i = 0; i < lineSize; ++i)
         {
-			int lineSize = line.size();
-            totalCharCount += (int)lineSize;
-            for (std::string::size_type i = 0; i < lineSize; ++i)
+            char c = line[i];
+            if (c == _character)
             {
-                char c = line[i];
-                if (c == _character)
-                {
-					occurences++;
-                }
+				occurences++;
             }
         }
+        
     }
 
 	_characterOccurences[_index] = occurences;

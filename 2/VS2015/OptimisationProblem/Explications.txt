@@ -10,6 +10,7 @@ Optimisations:
 	- fonction main(): enlever le Sort() des fichiers, c'est déjà sorté par défaut.
 	
 4. Directory.cpp
+	- fonction Files(): remplacer le for_each par un for!
 	- fonction Files(): enlever la variable nCount - inutile. Remplacement par 0 dans le if
 	- fonction Files(): v.resize(VECTOR_RESIZE_VALUE) plutôt que 0 + VECTOR_RESIZE_VALUE
 	
@@ -17,6 +18,7 @@ Optimisations:
 	- Retrait de méthode inutile
 	- Retrait de call a string.size() inutiles
 	- Retrait de call à eof
+	- fonction ComputeFile: _arraySize = _arraySize + VECTOR_RESIZE_VALUE; devient ++_arraySize;
 
 6. Plusieurs fichiers
 	- Retrait de méthodes inutiles

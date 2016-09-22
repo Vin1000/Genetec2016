@@ -89,7 +89,6 @@ std::list<File> Directory::Files()
     using std::begin;
     using std::end;
     using std::endl;
-    using std::for_each;
     using std::wstring;
 
     std::string log;
@@ -126,7 +125,7 @@ std::list<File> Directory::Files()
     } while (FindNextFileW(_hFind, &_ffd) != 0);
 
     // copy vector to list
-    for_each(v.cbegin(), v.cend(), [&files](auto it) { files.push_back(it); });
+    for (unsigned i = 0; i<v.size(); i++) files.push_back(v[i]);
 
     Logger::Info("Found " + std::to_string(files.size()) + " file(s) in the folder.");
 

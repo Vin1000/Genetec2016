@@ -25,22 +25,6 @@ Statistics::~Statistics()
     delete _characterRatio;
 }
 
-float Statistics::ComputeCharacterAverageRatio() const
-{
-    float total = 0;
-    for (int i = 0; i < _index; i++)
-    {
-        total = total + _characterRatio[i];
-    }
-
-    if (total > 0)
-        return total / (_index + 1);
-
-    return 0.0f;
-}
-
-
-
 std::string Statistics::ComputeFile(FileReader fr, std::wstring fileName)
 {
     

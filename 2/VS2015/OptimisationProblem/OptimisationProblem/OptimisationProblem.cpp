@@ -26,8 +26,12 @@ int main(int argc, char *argv[])
 
     //////////////////////////////////////////////////////////
     // Start
-	Logger::Info("\n==================================\nStart.");
-    Logger::LineJump();
+
+	Logger::LineJump();
+	Logger::LineJump();
+	Logger::LineJump();
+     Logger::Info("Start.");
+     Logger::LineJump();
 
 
     // Argument checking: getting input path for files to process

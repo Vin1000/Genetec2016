@@ -19,24 +19,14 @@ int main(int argc, char *argv[])
     using std::cout;
     using std::endl;
 
-    std::string log;
-
     // Get starting time to evaluate performance of code
     auto start = std::chrono::system_clock::now().time_since_epoch();
 
     //////////////////////////////////////////////////////////
     // Start
-	// TODO: remove this
-
-	Logger::LineJump();
-	Logger::LineJump();
-	Logger::LineJump();
-     Logger::Info("Start.");
-     Logger::LineJump();
-
 
     // Argument checking: getting input path for files to process
-    log = "Checking input arguments: ";
+
     std::string folderPath;
     std::string outputPath;
     char statChar;
@@ -44,7 +34,6 @@ int main(int argc, char *argv[])
 	// TODO: Remove this if.
     if (argc < 4)
     {
-        Logger::Info(log + "Missing argument FOLDER_PATH. Manual input required.");
         std::cout << "Please provide a folder path:";
         std::cin >> folderPath;
 
@@ -70,11 +59,7 @@ int main(int argc, char *argv[])
     Directory dir;
     STATUS_CODE status = dir.Open(folderPath.c_str());
 
-    if (STATUS_CODE::OK == status)
-    {
-        Logger::Info("Folder opened successfully.");
-    }
-    else if (STATUS_CODE::INVALID_ARGUMENTS == status)
+    if (STATUS_CODE::INVALID_ARGUMENTS == status)
     {
         // Logger::Info("Invalid argument error.");
         return -1;
@@ -102,19 +87,14 @@ int main(int argc, char *argv[])
                     fw.Write(line);
                 }
             }
-            else
-            {
-                Logger::Info("Failed to open file: " + ws2s(file.FullPath()));
-            }
         }
+        
+        FileReader fr;
+        if (fr.Open(s2ws(outputPath) + file.Filename() + s2ws(".enc")))
         {
-            FileReader fr;
-            if (fr.Open(s2ws(outputPath) + file.Filename() + s2ws(".enc")))
-            {
-                FileWriter fw;
-                fw.Open(outputPath + "Statistics.txt",true);
-                fw.Write(stat.ComputeFile(std::move(fr), file.Filename() + s2ws(".enc")));
-            }
+            FileWriter fw;
+            fw.Open(outputPath + "Statistics.txt",true);
+            fw.Write(stat.ComputeFile(std::move(fr), file.Filename() + s2ws(".enc")));
         }
     }
 

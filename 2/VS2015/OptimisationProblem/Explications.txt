@@ -4,6 +4,7 @@ Optimisations:
 
 2. HelpersMethod.h
 	- fonction Sort(): utilisation de la variable last plutôt que de recalculer lst.end() deux fois.
+	- fonction Sort(): prev = curr++; plutôt que 2 lignes.
 
 3. OptimisationProblem.cpp
 	- fonction main(): enlever le Sort() des fichiers, c'est déjà sorté par défaut.
@@ -12,9 +13,11 @@ Optimisations:
 	- fonction Files(): enlever la variable nCount - inutile. Remplacement par 0 dans le if
 	- fonction Files(): v.resize(VECTOR_RESIZE_VALUE) plutôt que 0 + VECTOR_RESIZE_VALUE
 	
-5. Statistics.cpp
-	- Retrait de méthode inutile
+5. Plusieurs fichiers
+	- Retrait de méthodes inutiles
 
 6. Encoder.cpp
 	- fonction EncodeString(): mettre le size de l'input dans une variable plutôt que de le recalculer dans chaque boucle
-	- v.resize(VECTOR_RESIZE_VALUE) plutôt que 0 + VECTOR_RESIZE_VALUE
+	- fonction base64Encode(): mettre inputBuffer.size() % 3 dans une variable
+	- fonction base64Encode(): mettre inputbuffer.size() / 3 dans une variable
+	

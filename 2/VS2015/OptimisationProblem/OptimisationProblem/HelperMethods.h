@@ -28,8 +28,7 @@ static std::list<T> Sort(std::list<T> lst, bool ascending = true)
                 std::swap(*prev, *curr);
             }
 
-            prev = curr;
-            curr++;
+            prev = curr++;
         }
 
         last = prev;

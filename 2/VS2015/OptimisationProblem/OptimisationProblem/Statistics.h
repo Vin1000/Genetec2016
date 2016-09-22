@@ -15,11 +15,8 @@ private:
     mutable int _arraySize;
     int _index;
 public:
-    Statistics(char c);
+    Statistics(char c, int size);
     ~Statistics();
 
     std::string ComputeFile(FileReader fr, std::wstring fileName);
-
-    template<class T>
-    void Resize(T*& array, size_t currentSize) const;
 };

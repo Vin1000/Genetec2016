@@ -32,7 +32,7 @@ std::string Statistics::ComputeFile(FileReader fr, std::wstring fileName)
     {
         Resize(_characterOccurences, _index);
         Resize(_characterRatio, _index);
-        _arraySize = _arraySize + VECTOR_RESIZE_VALUE;
+		++_arraySize;
     }
 
     int totalCharCount = 0;

@@ -14,6 +14,8 @@ Optimisations:
 	
 5. Statistics.cpp
 	- Retrait de méthode inutile
+	- Retrait de call a string.size() inutiles
+	- Retrait de call à eof
 
 6. Encoder.cpp
 	- fonction EncodeString(): mettre le size de l'input dans une variable plutôt que de le recalculer dans chaque boucle

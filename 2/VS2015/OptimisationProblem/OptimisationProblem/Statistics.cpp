@@ -46,13 +46,11 @@ std::string Statistics::ComputeFile(FileReader fr, std::wstring fileName)
         totalCharCount += (int)lineSize;
         for (std::string::size_type i = 0; i < lineSize; ++i)
         {
-            char c = line[i];
-            if (c == _character)
+            if (line[i] == _character)
             {
 				occurences++;
             }
         }
-        
     }
 
 	_characterOccurences[_index] = occurences;

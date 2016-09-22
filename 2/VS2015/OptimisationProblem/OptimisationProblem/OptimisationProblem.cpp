@@ -19,9 +19,6 @@ int main(int argc, char *argv[])
     using std::cout;
     using std::endl;
 
-    // Get starting time to evaluate performance of code
-    auto start = std::chrono::system_clock::now().time_since_epoch();
-
     //////////////////////////////////////////////////////////
     // Start
 
@@ -98,16 +95,6 @@ int main(int argc, char *argv[])
             fw.Write(stat.ComputeFile(std::move(fr), file.Filename() + s2ws(".enc")));
         }
     }
-
-    // Logger::LineJump();
-    // Logger::Info("Finished.");
-
-    // Get end time to evaluate performance of code
-    auto end = std::chrono::system_clock::now().time_since_epoch();
-
-    // Log how long it took to process all files
-    int runtime = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-    Logger::Info("Program ran for : " + std::to_string(runtime));
 
     return 0;
 }
